@@ -181,7 +181,7 @@ const app = new Vue ({
         }
     },
     created() {
-        var url = 'http://sql5.freesqldatabase.com/sql5503817/productos'
+        var url = 'https://sql5.freesqldatabase.com/sql5503817/productos'
         this.fetchData(url)
     },
     })
