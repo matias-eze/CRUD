@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Codo a Codo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="d-flex flex-column m-3">
+        <div class="tabla m-0 p-0 mt-3 my-3">
+        <h1 class="p-4 pb-2">Productos</h1>
+        <div class="p-0 d-flex justify-content-center align-items-center">
+            <table class="table table-stripped p-3 m-3">
+                <tr>
+                    <th class="p-2 m-2">ID</th>
+                    <th class="p-2 m-2">Nombre</th>
+                    <th class="p-2 m-2">Precio</th>
+                    <th class="p-2 m-2">Stock</th>
+                    <th class="p-2 m-2">Acciones</th>
+                </tr>
+                <tr v-for="(i, index) in productos" :key="i.id">
+                    <th class="p-2 m-2">{{(i.id)}}</th>
+                    <td class="p-2 m-2">{{i.nombre}}</td>
+                    <td class="p-2 m-2">${{i.precio}}</td>
+                    <td class="p-2 m-2">{{i.stock}} un.</td>
+                    <td><button @click="cargarModificar('Modificar',i.id)" class="btn btn-warning m-1 btn-sm">Modificar</button><button @click='eliminar(i.id)' class="btn btn-danger m-1 btn-sm">Eliminar</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button @click="mostrarNuevo('Cargar')" class="btn btn-primary btn-lg m-5 mb-3 mt-2">NUEVO</button>
+        </div>
+    </div>
+    <div v-if="errores.errorNombre == true">
+        <div class="alert alert-danger mt-3" role="alert">
+          <h4 class="alert-heading">Error en el Titulo:</h4>
+          <p>El titulo debe tener mas 3 caracteres y solo acepta letras y numeros</p>
+          <hr>
+          <p class="mb-0">Ante cualquier inconveniente contactarse con el Administrador</p>
+        </div>
+    </div>
+    <div v-if="errores.errorPrecio == true">
+        <div class="alert alert-danger mt-3" role="alert">
+          <h4 class="alert-heading">Error en el Precio:</h4>
+          <p>El precio solo acepta numeros positivos y "." para separar los decimales</p>
+          <hr>
+          <p class="mb-0">Ante cualquier inconveniente contactarse con el Administrador</p>
+        </div>
+    </div>
+    <div v-if="errores.errorStock == true">
+        <div class="alert alert-danger mt-3" role="alert">
+          <h4 class="alert-heading">Error en el Stock:</h4>
+          <p>El stock solo acepta numeros positivos</p>
+          <hr>
+          <p class="mb-0">Ante cualquier inconveniente contactarse con el Administrador</p>
+        </div>
+    </div>
+        <div class="ventana align-self-center d-flex flex-column mt-2" v-if="nuevo == true">
+            <div class="align-self-end">
+                <button @click="cerrar()" class="btn btn-danger py-1 px-2 btn-sm m-3 mt-2 mb-0">X</button>
+            </div>
+            <h2 class="mx-4 mt-0">{{titulo}} Producto:</h2>
+            <div  class="container-fluid">
+            <form @keyup.enter="nuevoProductoCargar()">
+                <div class='d-flex flex-column'>
+                    <div class="form-floating m-2">
+                        <input v-model="nuevoProducto.nombre" type="text" class="form-control" id="floatingInput" placeholder="ingrese el nombre del Producto">
+                        <label for="floatingInput">Nombre: </label>
+                    </div>
+                </div>
+                <div class='d-flex flex-column'>
+                    <div class="form-floating m-2">
+                        <input v-model="nuevoProducto.precio" type="text" class="form-control" id="floatingInput" placeholder="ingrese el precio del Producto">
+                        <label for="floatingInput">Precio: </label>
+                    </div>
+                </div>
+                <div class='d-flex flex-column'>
+                    <div class="form-floating m-2">
+                        <input v-model="nuevoProducto.stock" type="text" class="form-control" id="floatingInput" placeholder="ingrese el stock del Producto">
+                        <label for="floatingInput">Stock: </label>
+                    </div>
+                </div>
+            </form>
+            </div>
+            <div v-if="titulo == 'Modificar'">
+                <button @click="modificar()" class="btn  btn-success mt-0 m-3">MODIFICAR</button>
+            </div>
+            <div v-else>
+                <button @click="nuevoProductoCargar()" class="btn mt-1 btn-success m-3">CARGAR</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
