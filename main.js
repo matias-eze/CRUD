@@ -127,7 +127,7 @@ const app = new Vue ({
         modificar () {
             this.validar()
             if (this.errores.errorNombre == false && this.errores.errorPrecio == false && this.errores.errorStock == false) {
-                let url = "https://quiet-harbor-36470.herokuapp.com/"+this.modificarID
+                let url = "https://quiet-harbor-36470.herokuapp.com/productos"+this.modificarID
                 let producto;
                 producto = {...this.nuevoProducto}
                 var options = {
