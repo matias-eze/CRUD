@@ -107,7 +107,7 @@ const app = new Vue ({
         cargarModificar (x,y) {
             this.modificarID = y
             this.mostrarNuevo(x)
-            let url = "https://quiet-harbor-36470.herokuapp.com/productos"+y
+            let url = "https://quiet-harbor-36470.herokuapp.com/productos/"+y
             var options = {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
@@ -127,7 +127,7 @@ const app = new Vue ({
         modificar () {
             this.validar()
             if (this.errores.errorNombre == false && this.errores.errorPrecio == false && this.errores.errorStock == false) {
-                let url = "https://quiet-harbor-36470.herokuapp.com/productos"+this.modificarID
+                let url = "https://quiet-harbor-36470.herokuapp.com/productos/"+this.modificarID
                 let producto;
                 producto = {...this.nuevoProducto}
                 var options = {
