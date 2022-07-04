@@ -107,7 +107,7 @@ const app = new Vue ({
         cargarModificar (x,y) {
             this.modificarID = y
             this.mostrarNuevo(x)
-            let url = "https://quiet-harbor-36470.herokuapp.com/"+y
+            let url = "https://quiet-harbor-36470.herokuapp.com/productos"+y
             var options = {
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
