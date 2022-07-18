@@ -5,9 +5,7 @@ from flask_marshmallow import Marshmallow
 app=Flask(__name__)
 CORS(app)
 # configuro la base de datos, con el nombre el usuario y la clave
-#app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://root:Root@localhost/flaskmysql'
-#                                               user:clave@localhost/nombreBaseDatos
-app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://sql5503817:3c2GbH4QRz@sql5.freesqldatabase.com/sql5503817'
+app.config['SQLALCHEMY_DATABASE_URI']='mysql+pymysql://****:****@sql5.freesqldatabase.com/****'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 db= SQLAlchemy(app)
 ma=Marshmallow(app)
